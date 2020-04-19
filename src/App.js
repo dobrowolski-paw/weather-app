@@ -24,7 +24,7 @@ class App extends Component {
   handlerCitySubmit = (e) => {
     e.preventDefault();
     console.log("potwierdzenie");
-    const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=${ApiKey}&units=metric`;
+    const API = `https://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=${ApiKey}&units=metric`;
     fetch(API)
       .then((response) => {
         if (response.ok) {
