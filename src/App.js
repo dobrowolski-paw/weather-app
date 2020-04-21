@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Form from "./Form";
 import Rezult from "./Rezult";
 import "./App.css";
+import Logo from "./Logo";
+
 //klucz do API
 const ApiKey = "a30dc76c8a569467302ffb89eaaea2ec";
 class App extends Component {
@@ -12,13 +14,35 @@ class App extends Component {
     sunrise: "",
     sunset: "",
     temp: "",
+    tempFeelsLike: "",
     wind: "",
     pressure: "",
     err: false,
+    weatherIcon: "",
   };
   handlerImputChange = (e) => {
     this.setState({
       value: e.target.value,
+    });
+  };
+  handlerValueParczew = (e) => {
+    this.setState({
+      value: "Parczew",
+    });
+  };
+  handlerValueRadomsko = (e) => {
+    this.setState({
+      value: "Radomsko",
+    });
+  };
+  handlerValueLomza = (e) => {
+    this.setState({
+      value: "Łomża",
+    });
+  };
+  handlerValueWawa = (e) => {
+    this.setState({
+      value: "Warszawa",
     });
   };
   handlerCitySubmit = (e) => {
@@ -34,6 +58,7 @@ class App extends Component {
       })
       .then((response) => response.json())
       .then((json) => {
+        console.log(json);
         const time = new Date().toLocaleString();
         this.setState({
           err: false,
@@ -42,8 +67,10 @@ class App extends Component {
           sunrise: json.sys.sunrise,
           sunset: json.sys.sunset,
           temp: json.main.temp,
+          tempFeelsLike: json.main.feels_like,
           wind: json.wind.speed,
           pressure: json.main.pressure,
+          weatherIcon: json.weather[0].icon,
         });
       })
       .catch((er) => {
@@ -57,13 +84,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Form
-          value={this.state.value}
-          change={this.handlerImputChange}
-          submit={this.handlerCitySubmit}
-        />
+        <header>
+          <Logo />
+        </header>
+        <div className="weather">
+          <Form
+            value={this.state.value}
+            change={this.handlerImputChange}
+            submit={this.handlerCitySubmit}
+            changeParczew={this.handlerValueParczew}
+            changeRadomsko={this.handlerValueRadomsko}
+            changeLomza={this.handlerValueLomza}
+            changeWawa={this.handlerValueWawa}
+          />
+          <Rezult className="rezult" weather={this.state} />
+        </div>
         ,
-        <Rezult weather={this.state} />
       </div>
     );
   }
