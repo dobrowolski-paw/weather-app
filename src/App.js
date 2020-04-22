@@ -18,7 +18,7 @@ class App extends Component {
     wind: "",
     pressure: "",
     err: false,
-    weatherIcon: "",
+    weatherIconCode: "",
   };
   handlerImputChange = (e) => {
     this.setState({
@@ -70,7 +70,7 @@ class App extends Component {
           tempFeelsLike: json.main.feels_like,
           wind: json.wind.speed,
           pressure: json.main.pressure,
-          weatherIcon: json.weather[0].icon,
+          weatherIconCode: json.weather[0].icon,
         });
       })
       .catch((er) => {
