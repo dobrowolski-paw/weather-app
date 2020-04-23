@@ -1,4 +1,5 @@
 Aplikacja pozwalająca sprawdzić aktualną pogodę w 200000 miat na całym świecie.
+Działającą aplikacje można zobaczyć pod adresem https://pawwel3.github.io/weather-app/
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
