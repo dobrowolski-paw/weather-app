@@ -69,6 +69,7 @@ header p {
 div.city {
   font-size: 10vh;
   margin-left: 5vw;
+  text-transform: uppercase;
 }
 div.date {
   text-align: center;
