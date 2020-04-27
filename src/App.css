@@ -4,6 +4,7 @@
 }
 
 .App {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -85,6 +86,7 @@ div.img {
   float: left;
   width: 33%;
 }
+
 div.temp {
   text-align: center;
   margin-top: 5vh;
@@ -108,4 +110,15 @@ div.wind {
   text-align: center;
   font-size: larger;
   margin: 15vh;
+}
+@media (max-width: 600px) {
+  div.img {
+    width: 100%;
+  }
+  div.temp {
+    width: 100%;
+  }
+  div.windPress {
+    width: 100%;
+  }
 }
